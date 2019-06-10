@@ -29,7 +29,18 @@ Route::namespace('Api')->prefix('v1')->middleware('cors')->group(function () {
             Route::get('/users/{user}', 'UserController@show')->name('users.show');
             //用户退出
             Route::get('/logout', 'UserController@logout')->name('users.logout');
+
+            //频道列表
+            Route::get('/channels', 'ChannelController@index')->name('channels.index');
+            //频道详情
+            Route::get('/channels/{channel}', 'ChannelController@show')->name('channels.show');
+
+            //频道EPG列表
+            Route::get('/channels/{channel}', 'ChannelController@index')->name('channels.index');
+
+
         });
+        
     });
     Route::middleware('admin.guard')->group(function () {
         //管理员注册
